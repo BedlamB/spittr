@@ -15,7 +15,6 @@ public class SpittrWebAppInitializer extends
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[] { RootConfig.class };
     }
-
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[] { WebConfig.class };

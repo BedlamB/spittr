@@ -31,29 +31,4 @@ public class HomeControllerTest {
                 .andExpect(view().name("home"));
     }
 
-    @Test
-    public void shouldShowRecentSpittles() throws Exception {
-        List<Spittle> expectedSpittles = createSpittleList(20);
-        SpittleRepository mockRespository = mock(SpittleRepository.class);
-        when(mockRespository.findSpittles(Long.MAX_VALUE, 20)).thenReturn(expectedSpittles);
-
-        SpittleController controller = new SpittleController(mockRespository);
-        MockMvc mockMvc = standaloneSetup(controller).setSingleView(
-                new InternalResourceView("/WEB-INF/views/spittles.jsp"))
-                .build();
-
-        mockMvc.perform(get("/spittles"))
-                .andExpect(view().name("spittles"))
-                .andExpect(model().attributeExists("spittleList"))
-                .andExpect(model().attribute("spittleList", hasItems(expectedSpittles.toArray())));
-    }
-
-    private List<Spittle> createSpittleList(int count) {
-        List<Spittle> spittles = new ArrayList<Spittle>();
-        for (int i = 0; i < count; i++) {
-            spittles.add(new Spittle("Spittle " + i, new Date()));
-        }
-        return spittles;
-    }
-
 }

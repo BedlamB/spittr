@@ -24,7 +24,7 @@ public class SpittleControllerTest {
     public void shouldShowRecentSpittles() throws Exception {
         List<Spittle> expectedSpittles = createSpittleList(20);
         SpittleRepository mockRespository = mock(SpittleRepository.class);
-        when(mockRespository.findSpittles(238900, 20)).thenReturn(expectedSpittles);
+        when(mockRespository.findSpittles(Long.MAX_VALUE, 20)).thenReturn(expectedSpittles);
 
         SpittleController controller = new SpittleController(mockRespository);
         MockMvc mockMvc = standaloneSetup(controller).setSingleView(

@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("/spittles")
 public class SpittleController {
 
-    private static final String MAX_LONG_AS_STRING = Long.toString(Long.MAX_VALUE);
+    private static final String MAX_LONG_AS_STRING = "9223372036854775807";
 
     private SpittleRepository spittleRepository;
 
@@ -27,7 +27,7 @@ public class SpittleController {
 
     @RequestMapping(method=RequestMethod.GET)
     public List<Spittle> spittles(
-            @RequestParam(value = "max", defaultValue="238900") long max,
+            @RequestParam(value = "max", defaultValue=MAX_LONG_AS_STRING) long max,
             @RequestParam(value = "count", defaultValue = "20") int count) {
         return spittleRepository.findSpittles(max, count);
     }

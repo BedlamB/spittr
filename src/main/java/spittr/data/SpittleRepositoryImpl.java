@@ -10,8 +10,14 @@ import java.util.List;
 @Component
 public class SpittleRepositoryImpl implements SpittleRepository {
 
-    @Override public List<Spittle> findSpittles(long max, int count) {
+    @Override
+    public List<Spittle> findSpittles(long max, int count) {
         return createSpittleList(count);
+    }
+
+    @Override
+    public Spittle findOne(long id) {
+        return new Spittle(12345, "Spittle 8",new Date());
     }
 
     private List<Spittle> createSpittleList(int count) {
